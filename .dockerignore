@@ -1,0 +1,6 @@
+.git
+.vscode
+**/bin
+**/obj
+README.md
+RELATORIO-STATUS.md

@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteApi.Grpc";
+
+package restaurante;
+
+import "google/protobuf/timestamp.proto";
+
+service RestauranteService {
+  rpc ListarClientes (Empty) returns (ListaClientesResponse);
+  rpc ObterCliente (IdRequest) returns (ClienteResponse);
+  rpc CriarCliente (CriarClienteRequest) returns (ClienteResponse);
+  rpc AtualizarCliente (AtualizarClienteRequest) returns (ClienteResponse);
+  rpc ExcluirCliente (IdRequest) returns (Empty);
+
+  rpc ListarPedidos (Empty) returns (ListaPedidosResponse);
+  rpc ObterPedido (IdRequest) returns (PedidoResponse);
+  rpc CriarPedido (CriarPedidoRequest) returns (PedidoResponse);
+  rpc AtualizarPedido (AtualizarPedidoRequest) returns (PedidoResponse);
+  rpc ExcluirPedido (IdRequest) returns (Empty);
+}
+
+message Empty {}
+
+message IdRequest {
+  string id = 1;
+}
+
+message ClienteResponse {
+  string id = 1;
+  string nome = 2;
+  string email = 3;
+  bool ativo = 4;
+}
+
+message ListaClientesResponse {
+  repeated ClienteResponse clientes = 1;
+}
+
+message CriarClienteRequest {
+  string nome = 1;
+  string email = 2;
+  bool ativo = 3;
+}
+
+message AtualizarClienteRequest {
+  string id = 1;
+  string nome = 2;
+  string email = 3;
+  bool ativo = 4;
+}
+
+message PedidoResponse {
+  string id = 1;
+  string cliente_id = 2;
+  string descricao = 3;
+  int64 valor_centavos = 4;
+  google.protobuf.Timestamp criado_em_utc = 5;
+}
+
+message ListaPedidosResponse {
+  repeated PedidoResponse pedidos = 1;
+}
+
+message CriarPedidoRequest {
+  string cliente_id = 1;
+  string descricao = 2;
+  int64 valor_centavos = 3;
+}
+
+message AtualizarPedidoRequest {
+  string id = 1;
+  string cliente_id = 2;
+  string descricao = 3;
+  int64 valor_centavos = 4;
+}

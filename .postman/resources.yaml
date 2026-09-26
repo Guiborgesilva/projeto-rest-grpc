@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 81de4388-2813-499b-8a0e-bcb66a16f17f
+
+localResources:
+  specs:
+    - ../src/RestauranteApi/Protos/restaurante.proto
