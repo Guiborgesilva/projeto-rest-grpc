@@ -1,0 +1,5 @@
+Para ver as tabelas no Postgre:
+Subir os containeres: docker compose up -d --build
+Abrir o PostgreSQL no container: docker exec -it restaurante-postgres psql -U postgres -d restaurante
+Para ver as tabelas: \dt
+Visualizar os dados: select * from clientes/pedidos;
