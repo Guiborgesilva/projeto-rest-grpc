@@ -3,3 +3,4 @@ Subir os containeres: docker compose up -d --build
 Abrir o PostgreSQL no container: docker exec -it restaurante-postgres psql -U postgres -d restaurante
 Para ver as tabelas: \dt
 Visualizar os dados: select * from clientes/pedidos;
+Para executar com gRPC: grpcurl -plaintext -import-path ./src/RestauranteApi/Protos -proto src/RestauranteApi/Protos/restaurante.proto localhost:5000 restaurante.RestauranteService/ListarClientes
